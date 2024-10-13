@@ -1,0 +1,100 @@
+/* styles/globals.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global styles */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html{
+  scroll-behavior: smooth;
+  font-family: "Cairo", sans-serif;
+}
+
+button:disabled{
+  background-color: gray !important;
+}
+ 
+
+/* Custom Swiper Navigation Buttons */
+.swiper-button-prev-custom,
+.swiper-button-next-custom {
+  /* Set the color based on the current theme */
+  color: var(--swiper-navigation-color, #000); /* Default color for light mode */
+  background-color: rgba(0, 0, 0, 0.2); /* Semi-transparent background */
+  border-radius: 50%; /* Make the background circular */
+  padding: 10px; /* Add padding for better click area */
+  transition: background-color 0.3s ease;
+}
+
+.swiper-button-prev-custom:hover,
+.swiper-button-next-custom:hover {
+  background-color: rgba(0, 0, 0, 0.4); /* Darker background on hover */
+}
+
+.dark .swiper-button-prev-custom,
+.dark .swiper-button-next-custom {
+  color: var(--swiper-navigation-color-dark, #fff); /* Color for dark mode */
+}
+
+/* Pagination Dots Customization */
+.swiper-pagination-bullet {
+  background: var(--swiper-pagination-bullet-color, #000); /* Default bullet color */
+}
+
+.dark .swiper-pagination-bullet {
+  background: var(--swiper-pagination-bullet-color-dark, #fff); /* Bullet color for dark mode */
+}
+
+/* You can add transitions to make them smooth when switching between light and dark modes */
+.swiper-pagination-bullet,
+.swiper-button-prev-custom,
+.swiper-button-next-custom {
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+
+
+/* Custom Scrollbar using Tailwind CSS */
+@layer base {
+  ::-webkit-scrollbar {
+    @apply w-2; /* Set scrollbar width */
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-lg bg-gray-500 dark:bg-[#807b7b9d]; /* Rounded corners, adaptable to light and dark modes */
+    border-width: 1px;
+    border-color: #f4f4f4; /* Space between thumb and track */
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply rounded-lg bg-gray-300 dark:bg-gray-700; /* Track background adaptable to light and dark modes */
+  }
+
+  /* Hover effect for both modes */
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-600 dark:bg-gray-500; /* Darken on hover */
+  }
+}
+
+
+
+
+
+/* Hide the animation by default */
+.custom-show {
+  display: none; /* Initially hide the animation */
+}
+
+/* Show the animation only on screens 858px and above */
+@media (min-width: 858px) {
+  .custom-show {
+    display: block !important; /* Ensure it shows on larger screens */
+  }
+}
